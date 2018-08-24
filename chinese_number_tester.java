@@ -21,8 +21,6 @@ public class chinese_number_tester
         cCharacters[11] = "\u767E"; // 100
         cCharacters[12] = "\u5343"; // 1000
 
-       	System.out.println();
-       	System.out.println(number_to_string(284));
 		System.out.println("====================================");
 		System.out.println("Welcome to \u5965\u5229\u5F17\u7684\u4E2D\u6587\u6570\u77E5\u8BC6\u6D4B\u8BD5!");
 		System.out.println("====================================");
