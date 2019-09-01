@@ -1,10 +1,13 @@
 import java.util.Scanner;
+import java.util.NoSuchElementException;
+
 public class chinese_number_tester
 {
+
 	public static String[] cCharacters = new String[13];
     public static void main(String[] args)
     {
-    	Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		int input = 0;
 		int max = 0;
         cCharacters[ 0] = "\u96f6"; // 0
@@ -20,65 +23,77 @@ public class chinese_number_tester
         cCharacters[10] = "\u5341"; // 10
         cCharacters[11] = "\u767E"; // 100
         cCharacters[12] = "\u5343"; // 1000
+        while (true){
+			System.out.println("====================================");
+			System.out.println("Welcome to \u5965\u5229\u5F17\u7684\u4E2D\u6587\u6570\u77E5\u8BC6\u6D4B\u8BD5!");
+			System.out.println("====================================");
+			while (true){
+				System.out.println("Select a difficulty:");
+				System.out.println("\t1. Beginner (0-9)");
+				System.out.println("\t2. Easy (0-99)");
+				System.out.println("\t3. Medium (0-999)");
+				System.out.println("\t4. Hard (0-9999)");
+				System.out.println("\nOther: ");
+				System.out.println("\t9. Exit");
+				//System.out.println("\t5. Extreme (0-99999)");
+				//System.out.println("\t6. \u5929\u624D (0-999999)\n\n");
 
-		System.out.println("====================================");
-		System.out.println("Welcome to \u5965\u5229\u5F17\u7684\u4E2D\u6587\u6570\u77E5\u8BC6\u6D4B\u8BD5!");
-		System.out.println("====================================");
-		while (true){
-			System.out.println("Select a difficulty:");
-			System.out.println("\t1. Beginner (0-9)");
-			System.out.println("\t2. Easy (0-99)");
-			System.out.println("\t3. Medium (0-999)");
-			System.out.println("\t4. Hard (0-9999)");
-			//System.out.println("\t5. Extreme (0-99999)");
-			//System.out.println("\t6. \u5929\u624D (0-999999)\n\n");
-			input = scanner.nextInt();
-			if (input == 1){
-				max = 9;
-				break;
+				input = scanner.nextInt();
+				if (input == 1){
+					max = 9;
+					break;
+				}
+				else if (input == 2){
+					max = 99;
+					break;
+				}
+				else if (input == 3){
+					max = 999;
+					break;
+				}
+				else if (input == 4){
+					max = 9999;
+					break;
+				}
+				else if (input == 9){
+					System.exit(1);
+				}
+				// else if (input == 5){
+				// 	max = 99999;
+				// 	break;
+				// }
+				// else if (input == 6){
+				// 	max = 999999;
+				// 	break;
+				// }
+				else
+					System.out.println("Input not in range");
 			}
-			else if (input == 2){
-				max = 99;
-				break;
-			}
-			else if (input == 3){
-				max = 999;
-				break;
-			}
-			else if (input == 4){
-				max = 9999;
-				break;
-			}
-			// else if (input == 5){
-			// 	max = 99999;
-			// 	break;
-			// }
-			// else if (input == 6){
-			// 	max = 999999;
-			// 	break;
-			// }
-			else
-				System.out.println("Input not in range");
-		}
-		int number = getRandomNumber(max);
-		int points = 0;
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		while (true)
-		{
-			System.out.print("What is "+number_to_string(number)+"? ");
-			input = scanner.nextInt();
+			int number = getRandomNumber(max);
+			int points = 0;
 			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			if (number == input)
+			while (true)
 			{
-				points++;
-				System.out.print("Points: "+points+" - ");
-				System.out.println("Correct!");
-				number = getRandomNumber(max);
-			}
-			else
-			{
-				System.out.print("Points: "+points+" - ");
-				System.out.println("Incorrect!");
+				System.out.print("What is "+number_to_string(number)+"? ");
+				System.out.println();
+				input = scanner.nextInt();
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				if (number == input)
+				{
+					points++;
+					System.out.print("Points: "+points+" - ");
+					System.out.println("Correct!");
+					number = getRandomNumber(max);
+				}
+				else
+				{
+					System.out.print("Points: "+points+" - ");
+					System.out.println("Incorrect!");
+				}
+				if (points == 10) 
+				{
+					break;
+				}
 			}
 		}
     }
@@ -141,4 +156,5 @@ public class chinese_number_tester
 	{
 		return true;
 	}
+
 }
